@@ -1,0 +1,533 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- link libary leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+
+
+
+    <!-- W3 CSS template -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin="">
+    </script>
+
+  <style>
+    #mapid {
+      height: 800px;
+          }
+  </style>
+
+  <title>Latvia Tourist Map</title>
+</head>
+
+<body>
+ <BODY BACKGROUND="latvia.jpg"> </BODY>
+
+<center><h1> <p style="color: #47c3d4"> <strong>LATVIA Tourist Map </strong> </h1></center></p>
+</center>
+  <p style="color: #dc9966"><strong>by <em>Thitichaya M.</em><strong></p>
+
+
+
+  <div class="w3-row">       
+     <div id="mapid" class="w3-half"></div>     
+        <div id="content" class="w3-half">     
+              <table class="w3-table w3-striped">             
+            <tr>             
+                   <th>Tourist Attraction</th>     
+                           <th>Type</th>     
+                            <th>Rates</th>       
+                    </tr>             
+              <tr>               
+                  <td>น้ำตก A</td>         
+                         <td>ธรรมชาติ</td>       
+                            <td>A</td>           
+                  </tr>       
+                </table>     
+            </div> 
+           </div>
+
+  <script>
+    var map = L.map("mapid").setView([56.84807344216856, 24.67484551447643],7);
+    var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
+               .addTo(map);
+    var gsat = L.tileLayer("https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}")
+               .addTo(map);
+    var watercolor = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
+           	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+           	subdomains: 'abcd',
+           	minZoom: 1,
+           	maxZoom: 16,
+           	ext: 'jpg'
+           })
+               .addTo(map);
+
+    var baseMaps = {
+      OSM:osm,
+      GoogleSat:gsat,
+      WTcolor:watercolor,
+    };
+
+    var tourpoint = {
+  type: "FeatureCollection",
+  name: "tour_plk",
+  crs: {
+  type: "name",
+  properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" },
+  },
+  features: [
+  {
+  type: "Feature",
+  properties: {
+  Name: "Liepāja",
+  Type: "Beach",
+  FID_1: 1358.0,
+  level: "4.8 <br> ⭐️⭐️⭐️⭐️⭐️",
+  },
+  geometry: {
+  type: "MultiPoint",
+  coordinates: [[21.005526217513285,56.505507352125946]],
+  },
+  },
+  {
+  type: "Feature",
+  properties: {
+  Name: "Gauja National Park",
+  Type: "Park",
+  FID_1: 1357.0,
+  level: "4.7 <br> ⭐️⭐️⭐️⭐️",
+  },
+  geometry: {
+  type: "MultiPoint",
+  coordinates: [[24.658618106708836,57.12483128982367]],
+  },
+  },
+  {
+  type: "Feature",
+  properties: {
+  Name: "Kuldīga brick bridge over Venta",
+  Type: "History",
+  FID_1: 1362.0,
+  level: "4.8 <br> ⭐️⭐️⭐️⭐️⭐️",
+  },
+  geometry: {
+  type: "MultiPoint",
+  coordinates: [[21.98408245984423,56.9709654715345]],
+  },
+  },
+  {
+  type: "Feature",
+  properties: {
+  Name: "Slītere National Park",
+  Type: "Park",
+  FID_1: 1364.0,
+  level: "4.7 <br> ⭐️⭐️⭐️⭐️",
+  },
+  geometry: {
+  type: "MultiPoint",
+  coordinates: [[22.421560547824356,57.700203181708076]],
+  },
+  },
+  {
+  type: "Feature",
+  properties: {
+  Name: "Cēsis Castle",
+  Type: "History",
+  FID_1: 1355.0,
+  level: "4.8 <br> ⭐️⭐️⭐️⭐️⭐️",
+  },
+  geometry: {
+  type: "MultiPoint",
+  coordinates: [[25.2783714703152,57.31519617886812]],
+  },
+  },
+  {
+  type: "Feature",
+  properties: {
+  Name: "Mazbānīša stacija",
+  Type: "Museum",
+  FID_1: 1365.0,
+  level: "4.8 <br> ⭐️⭐️⭐️⭐️⭐️",
+  },
+  geometry: {
+  type: "MultiPoint",
+  coordinates: [[21.534793004333316,57.38644453150127]],
+  },
+  },
+  {
+  type: "Feature",
+  properties: {
+  Name: "Ventspils zila karoga pludmale",
+  Type: "Beach",
+  FID_1: 733.0,
+  level: "4.8 <br> ⭐️⭐️⭐️⭐️⭐️",
+  },
+  geometry: {
+  type: "MultiPoint",
+  coordinates: [[21.528696927855687,57.39009239836101]],
+  },
+  },
+  {
+  type: "Feature",
+  properties: {
+  Name: "Paradise Hill",
+  Type: "Park",
+  FID_1: 1359.0,
+  level: "4.8 <br> ⭐️⭐️⭐️⭐️⭐️",
+  },
+  geometry: {
+  type: "MultiPoint",
+  coordinates: [[24.874101669693864,57.17651679145818]],
+  },
+  },
+  {
+  type: "Feature",
+  properties: {
+  Name: "National History Museum of Latvia",
+  Type: "Museum",
+  FID_1: 603.0,
+  level: "4.5 <br> ⭐️⭐️⭐️",
+  },
+  geometry: {
+  type: "MultiPoint",
+  coordinates: [[24.113034903926387,56.95600572854315]],
+  },
+  },
+  {
+  type: "Feature",
+  properties: {
+  Name: "Koknese Castle Ruins",
+  Type: "History",
+  FID_1: 611.0,
+  level: "4.7 <br> ⭐️⭐️⭐️⭐️",
+  },
+  geometry: {
+  type: "MultiPoint",
+  coordinates: [[25.41688084517737,56.63974604584869]] },
+  },
+  {
+  type: "Feature",
+  properties: {
+  Name: "Rundāle Palace Museum",
+  Type: "Museum",
+  FID_1: 1370.0,
+  level: "4.7 <br> ⭐️⭐️⭐️⭐️",
+  },
+  geometry: {
+  type: "MultiPoint",
+  coordinates: [[24.025000780783014,56.41343917893189]],
+  },
+  },
+  ],
+  };
+
+var tourLayer = L.geoJSON(tourpoint, {
+pointToLayer: function (feature, latlng) {
+return L.marker(latlng).bindPopup(feature.properties.Name);
+},
+onEachFeature: function (feature, layer) {
+layer.on("mouseover", function () {
+document
+.getElementById(feature.properties.FID_1)
+.classList.add("w3-red");
+});
+
+layer.on("mouseout", function () {
+document
+.getElementById(feature.properties.FID_1)
+.classList.remove("w3-red");
+});
+},
+}).addTo(map);
+
+var cont = "";
+    cont += "<table class='w3-table w3-striped'>";
+    cont += "<tr>";
+    cont += "<th><font color= #dc9966 >TOURIST ATTRACTION</font></th>";
+    cont += "<th><font color= #dc9966  >TYPE</font></th>";
+    cont += "<th><font color= #dc9966  >RATING</font></th>";
+    cont += "</tr>";
+    for (let i in tourpoint.features) {
+    cont += "<tr id=" + tourpoint.features[i].properties.FID_1 + ">";
+    cont += "<td><strong><font color= #47c3d4 >" + tourpoint.features[i].properties.Name + "</strong></font></td>";
+    cont += "<td><strong><font color= #47c3d4 >" + tourpoint.features[i].properties.Type + "</strong></font></td>";
+    cont += "<td><strong><font color= #47c3d4 >" + tourpoint.features[i].properties.level + "</strong></font></td>";
+    cont += "</tr>";
+    }
+    cont += "</table>";
+    console.log(cont);
+    document.getElementById("content").innerHTML = cont;
+
+var polygonGeoJson = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stroke": "#ff2600",
+        "stroke-width": 2,
+        "stroke-opacity": 1,
+        "fill": "#ffffff",
+        "fill-opacity": 0.5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              23.22509765625,
+              57.10641902897248
+            ],
+            [
+              23.1591796875,
+              57.32652122521709
+            ],
+            [
+              22.631835937499996,
+              57.598334849584454
+            ],
+            [
+              22.60986328125,
+              57.76865857271793
+            ],
+            [
+              21.68701171875,
+              57.58655886615978
+            ],
+            [
+              21.423339843749996,
+              57.29685437021898
+            ],
+            [
+              21.368408203125,
+              57.01083265740579
+            ],
+            [
+              21.038818359375,
+              56.83094409085875
+            ],
+            [
+              20.950927734375,
+              56.218923189166624
+            ],
+            [
+              21.0498046875,
+              56.08429756206141
+            ],
+            [
+              21.214599609375,
+              56.0965557505683
+            ],
+            [
+              21.4892578125,
+              56.32262930069559
+            ],
+            [
+              22.137451171875,
+              56.444276846622905
+            ],
+            [
+              22.9833984375,
+              56.41390137600676
+            ],
+            [
+              23.115234374999996,
+              56.34090120419907
+            ],
+            [
+              24.488525390625,
+              56.26776108757582
+            ],
+            [
+              24.906005859375,
+              56.45034902929676
+            ],
+            [
+              25.15869140625,
+              56.15778819063682
+            ],
+            [
+              25.718994140624996,
+              56.139428693863245
+            ],
+            [
+              26.3671875,
+              55.75803176823725
+            ],
+            [
+              26.663818359375,
+              55.665193184436035
+            ],
+            [
+              26.883544921875,
+              55.71473455012689
+            ],
+            [
+              27.147216796875,
+              55.85681658243853
+            ],
+            [
+              27.39990234375,
+              55.78275147606406
+            ],
+            [
+              27.652587890624996,
+              55.78892895389262
+            ],
+            [
+              27.66357421875,
+              55.91842985630817
+            ],
+            [
+              28.212890625,
+              56.24334992410525
+            ],
+            [
+              28.14697265625,
+              56.504955021170176
+            ],
+            [
+              27.938232421875,
+              56.87899917413543
+            ],
+            [
+              27.6416015625,
+              56.8429636484013
+            ],
+            [
+              27.773437499999996,
+              57.100452089370705
+            ],
+            [
+              27.861328125,
+              57.29091812634045
+            ],
+            [
+              27.520751953125,
+              57.45086080787626
+            ],
+            [
+              27.542724609375,
+              57.53941679447497
+            ],
+            [
+              27.388916015625,
+              57.545312891475504
+            ],
+            [
+              26.91650390625,
+              57.604221411628735
+            ],
+            [
+              26.575927734375,
+              57.51582286553883
+            ],
+            [
+              26.488037109375,
+              57.56888774130087
+            ],
+            [
+              26.323242187499996,
+              57.592447334458846
+            ],
+            [
+              26.136474609375,
+              57.76865857271793
+            ],
+            [
+              25.72998046875,
+              57.89149735271034
+            ],
+            [
+              25.33447265625,
+              58.0836849931604
+            ],
+            [
+              25.29052734375,
+              57.99645479967
+            ],
+            [
+              25.191650390625,
+              58.08949277309781
+            ],
+            [
+              24.993896484374996,
+              58.019737000187305
+            ],
+            [
+              24.840087890624996,
+              57.97898320865358
+            ],
+            [
+              24.554443359375,
+              57.961503094284794
+            ],
+            [
+              24.444580078125,
+              57.89733637871555
+            ],
+            [
+              24.378662109375,
+              57.89733637871555
+            ],
+            [
+              24.41162109375,
+              57.24339368551155
+            ],
+            [
+              23.66455078125,
+              56.9569571133683
+            ],
+            [
+              23.48876953125,
+              57.028773851491124
+            ],
+            [
+              23.22509765625,
+              57.10641902897248
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
+
+var polygonLayer = L.geoJSON(polygonGeoJson, {
+style: function (feature) {
+return { color: feature.properties.color };
+},
+onEachFeature: function (feature, layer) {
+layer.bindPopup(feature.properties.name);
+
+layer.on("mouseover", function () {
+layer.openPopup();
+});
+
+layer.on("mouseout", function () {
+layer.closePopup();
+});
+},
+});
+
+var overlays = {
+Tourist_attraction:tourLayer,
+Latvia_Country_Boundary:polygonLayer
+};
+
+
+    L.control.layers(baseMaps,overlays).addTo(map);
+
+  </script>
+
+</body>
+</html>
